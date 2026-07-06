@@ -1,0 +1,38 @@
+Date: 15/07, checkpoints: 1-3
+- Created main file: wrote function "check_user_input_map"to parse the input 
+map string from the command-line. Tested routines for input error handling.
+
+Date: 17/07, checkpoints: 4-10
+- Built functions for printing a game map state to the screen ("display_map").
+I decided to place these in their own source file "game_display.c". Spent time
+debugging issues with the header files and compiling using GCC.
+- TODO: get Makefile working with code
+
+Date: 19/07, checkpoints: 11-12
+- Added main while loop for the game
+- Added function for grabbing user move "get_player_move" and checking if it's valid.
+- got Makefile working for the project
+
+Date: 20/07, checkpoints: 13-16
+- Implemented pick-ups and check reached goal into main while loop
+- Handling of obstacles and running into walls in function "check_obstacles"
+- Had issues getting checks working for when player was moving off the edge
+of the game maze: kept failing test cases 6 and 7.
+-- asked Microsoft Co-pilot to help generate this function, used the prompt:
+"You are an expert C programmer. Create C code for a function that determines
+when a player moving on a 4-by-4 game map will hit one of the walls in the map.
+The function should have an input which is the index for the row and column of 
+the current player position and an input for the move direction (0 is up, 
+1 is down, 2 is left and 3 is right). The function should return whether the
+player hits a wall or not. Generate the code for this function now."
+-- had to modify the resulting function ("check_wall_collision") to handle a
+proposed move, and it works.
+
+Date: 22/07, checkpoints: 17-25
+- Finished main game loop and now passing all test cases.
+- Re-factored code for the game state, including player position and map
+array into a single structure for cleaner passing between functions.
+- Moved map checking functions into "map_functions.c/map_functions.h"
+- Final addition of comments to function interfaces, testing
+
+

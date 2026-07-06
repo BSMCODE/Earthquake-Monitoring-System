@@ -1,0 +1,75 @@
+Use this file to keep your log (see assignment instructions above).
+
+Date: 13/10/25, Checkpoints 1-3
+
+-Started working step by step process. 
+- Flow that I had in my mind: Read stdin-->identify between request and sensor packet input--> if sensor packet input, append into the heap-->if request, perform particular request
+-Wrote a simple while loop in the main function using fgets and sscanf to read the stdin
+of the sensor packets, then printed them out to check if the code was working. 
+-Tested this buy pressing the Test button, then it showed me the stdin for each test case as well as my output.
+-They were matching (even though I did not pass any of the test cases). 
+-Then I amended the provided SensorPacket struct to include a pointer to the next SensorPacket.
+-This was done to establish singly linked list. 
+-Added function to create a new node ("create_new_node") for each Sensor packet.
+-Used dynamic memory allocation (malloc) to allocate each node in the heap.
+-Added  function to append the sensor data ("append_sensor_data") into the heap as well as a function to free memory from the heap ("free_list").
+-Followed the same process that was done during the lectures.
+-To the main loop, added if conditions to identify between control centre requests and sensor data input.
+-This was done simply by checking if the first character was a "*" or a "#".
+-Added function to print the latest temperature ("print_latest_temp") and latest seismic data ("print_latest_seis").
+-This was done with by taking the first node's temperature/sesimic value as the latest, then looped through the list until the end, if the current node's time was greater than the latest's time,then this was considered as latest.
+-Added a line of code to read the example_input_001.txt file which had hypothetical set of message data,
+modified it to only have *send_latest_temp and *send_latest_seis. 
+-Ran the program and it sucessfully printed the latest temperature and sesimic value
+-Passed two test cases
+
+TODO: 
+Make separate files for functions so that main file looks cleaner.
+Add functions to perform the other control centre requests 
+    
+
+
+Date: 14/10/25 Checkpoint 4-7
+
+-Added function to print the maximum seismic value ("print_max_seis") (Checkpoint 3)
+-Tested by adding "*send_max_seis,5.00,9.00" to the example input file, then ran the program. 
+-Worked successfully 
+-Added function to delete measurements ("del_measurements")
+-Tested by adding "*del_measurements,ID17,5.00,8.00" to the example input file, then printed the 
+sensor data after deletion (Checkpoint 7)
+-Worked successfully
+-I decided to do make separte files for each function at the end, since I found it more comfortable working with one file during the development process. 
+
+TODO: 
+Shutdown and average temperature request
+Make separate files for functions so that main file looks cleaner.
+
+
+       
+Date 15/10/25, Checkpoint 8-19
+
+-Added if condition to sutdown the program 
+-Added function to print the avergage temperature ("print_avg_temp") 
+-Tested by adding "*send_average_temp,3.00,7.50" to the example input file, then printed the output.
+- Successfully gave the correct value.
+-Checkpoint 11 fixed a minor bug and pased 7 test cases.
+-Checkpoint 12 fixed a minor bug, description of assignment says the request for deleting measurment is given as "*del_measurements,ID<sensor_node_id>,<time1>,<time2>"
+whereas when the test cases were run, I came to know that the request is given as "*del_measurements,<sensor_node_id>,<time1>,<time2>" (notice there is no "ID"). 
+-Hence, I altered the reading of stdin accordingly and was able to pass all test cases.
+-Separated functions into different files and ran test cases, passed all. (Checkpoint 19)
+
+TODO:
+Add more comments and make the code look more cleaner 
+
+
+
+Date 16/10/25 and 17/10/25, Checkpoint (20-28)
+
+-Added comments
+-Changed "print_latest_seis" function from a while loop to for loop (Checkpoint 20), this way it is much more simple and neat. 
+-Similarly changed "print_latest_temp" function (Checkpoint 21)
+-Added check for out of memory in "create_new_node" function(Checkpoint 25)
+-Added "-fsanitize=address" flag to Makefile to check for any memory leaks. (Checkpoint 28)
+-Did not find any leaks. 
+-Ran final Test (Checkpoint 28).
+-Passed all the 12 test cases successfully.
